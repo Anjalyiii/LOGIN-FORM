@@ -1,0 +1,91 @@
+/* Container */
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Card */
+  .card {
+    border-radius: 15px;
+    background: #ffffff;
+    border: none;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading */
+  .card h2 {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #444;
+    font-weight: 500;
+    border-left: 4px solid #007bff;
+    padding-left: 8px;
+  }
+  
+  /* Labels */
+  .form-label {
+    font-weight: 500;
+    color: #555;
+  }
+  
+  /* Inputs */
+  .form-control {
+    border-radius: 8px;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0px 0px 6px rgba(0, 123, 255, 0.4);
+  }
+  
+  /* Error Messages */
+  .text-danger {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+  
+  /* Phone input row */
+  .d-flex input {
+    flex: 1;
+  }
+  
+  .btn-danger.btn-sm {
+    border-radius: 6px;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    transition: 0.3s;
+  }
+  
+  .btn-danger.btn-sm:hover {
+    background-color: #c82333;
+  }
+  
+  /* Add phone button */
+  .btn-secondary.btn-sm {
+    border-radius: 6px;
+    font-size: 0.9rem;
+    padding: 6px 14px;
+  }
+  
+  /* Submit Button */
+  button[type="submit"] {
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+  }
+  
+  button[type="submit"]:hover:enabled {
+    background-color: #0056b3;
+  }
+  
