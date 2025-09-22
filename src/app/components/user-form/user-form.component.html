@@ -1,6 +1,6 @@
 
-<div class="container mt-4">
-    <div class="card shadow p-4">
+<div class="form-table-wrapper" style="display: flex; gap: 20px; align-items: flex-start;">
+    <div class="form-container" style="flex: 1;">
         <h2 class="mb-4 text-center">User Details</h2>
 
         <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
@@ -9,7 +9,7 @@
             <div class="mb-3">
                 <label class="form-label">Name:</label>
                 <input type="text" class="form-control" formControlName="name">
-                <div class="text-danger mt-1" *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+                <div class="text-danger mt-1" *ngIf="userForm.get('name')?.invalid && submitted">
                     Name is required.
                 </div>
             </div>
@@ -18,7 +18,7 @@
             <div class="mb-3">
                 <label class="form-label">Email:</label>
                 <input type="email" class="form-control" formControlName="email">
-                <div class="text-danger mt-1" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+                <div class="text-danger mt-1" *ngIf="userForm.get('email')?.invalid && submitted">
                     Enter a valid email.
                 </div>
             </div>
@@ -30,11 +30,17 @@
                     <div class="col-md-6 mb-3">
                         <label class="form-label">City:</label>
                         <input type="text" class="form-control" formControlName="city">
+                        <div class="text-danger mt-1" *ngIf="userForm.get('city')?.invalid && submitted">
+                            Enter valid city
+                        </div>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Country:</label>
-                        <input type="text" class="form-control" formControlName="country">
-                    </div>
+                    <select formControlName="country">
+                        <option value="" disabled>Select Country</option>
+                        <option *ngFor="let c of countrylist" [value]="c.code">{{ c.name }}</option>
+                      </select>
+                      <div *ngIf="userForm.get('country')?.invalid && submitted">
+                        Country is required.
+                      </div>
                 </div>
             </div>
 
@@ -49,7 +55,7 @@
                         </button>
                     </div>
 
-                    <div class="text-danger mt-1" *ngIf="phone.invalid && phone.touched">
+                    <div class="text-danger mt-1" *ngIf="phone.invalid && submitted">
                         Type a valid 10-digit phone number.
                     </div>
                 </div>
@@ -59,10 +65,42 @@
 
             <!-- Submit -->
             <div class="mt-4">
-                <button type="submit" class="btn btn-primary w-100" [disabled]="userForm.invalid">
-                    Submit
+                <button type="submit" class="btn btn-primary w-100" >
+                    {{editIndex!==null?'Update user':'Submit'}}
                 </button>
             </div>
         </form>
     </div>
+
+
+
+    <div class="table-container" style="flex: 1;">
+        <table *ngIf="submittedUsers.length > 0" border="1" cellpadding="8" cellspacing="0" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of submittedUsers; let i=index">
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.address.city}}</td>
+                    <td>{{getCountryName(user.address.country)}}</td>
+                    <td>{{user.phoneNumbers[0]}}</td>
+                    <td>
+                        <button (click)="onEdit(i)">Edit</button>
+                        <button (click)="onDelete(i)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
 </div>
