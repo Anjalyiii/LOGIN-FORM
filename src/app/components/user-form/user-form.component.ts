@@ -24,7 +24,7 @@ export class UserFormComponent {
 
   constructor(private fb: FormBuilder) {
     
-    this.countrylist=Object.entries(countries.getNames("en",{select:"official"})).map(([code ,name])=>({code,name}));
+    this.countrylist=Object.entries(countries.getNames("en",{select:"official"})).map(([code ,name])=>({code,name:name as string}));
     
     this.userForm = this.fb.group({
       name: ['', Validators.required],
