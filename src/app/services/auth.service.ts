@@ -58,7 +58,7 @@ export class AuthService {
       // Signed in 
       const user = userCredential.user;
       console.log({user})
-      this.router.navigate(['/login'])
+      this.router.navigate(['/user-form'])
       // ...
     })
     .catch((error) => {
