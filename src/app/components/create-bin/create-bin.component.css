@@ -1,0 +1,11 @@
+textarea {
+    width: 100%;          /* takes full width of parent */
+    min-height: 200px;    /* more vertical space */
+    font-family: monospace; /* looks like a code editor */
+    font-size: 14px;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;     /* user can drag to resize only vertically */
+  }
+  

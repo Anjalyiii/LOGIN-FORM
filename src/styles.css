@@ -1,1 +1,117 @@
-/* You can add global styles to this file, and also import other style files */
+
+  /* Global reset 
+  global style for login,signup*/
+  .login-card, .signup-card {
+    position: relative;
+    padding: 60px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    border: 1px solid #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+    text-align: center;
+    z-index: 20; /* above all leaves and bg */
+    animation: fadeIn 1s ease forwards;
+  }
+  
+  .login-card h4, .signup-card h4 {
+    position:relative;
+    width: 100%;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 600;
+    color: #8f2c24 !important;
+    margin-bottom: 10px;
+  }
+  
+  .inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 15px 20px !important;
+    outline: none;
+    font-size: 1.25em;
+    color: #8f2c24 !important;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    background: #fff !important;
+    border: none !important;
+    outline: none;
+    text-align: left;
+  }
+  .red-text {
+    color: rgb(252, 17, 9);
+    font-size: 16px;
+    margin-top: 5px;
+    text-align: left;
+  }
+  .btn-green {
+    background: #19a70c;
+    color: #fff;
+    padding: 15px;
+    border:None;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+  .btn-green:hover{
+    background: #48ce3c;
+  }
+  
+  .btn-red {
+    background: #f33210;
+    color: hsl(98, 33%, 95%);
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+  .btn-red:hover{
+    background: #f15f46;
+  }
+  /*#btn {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    background: #8f2c24 !important;
+    color: #fff;
+    font-size: 1.25em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.5s;
+  }*/
+  
+  #btn:hover {
+    background: #d64c42 !important;
+    transform: scale(1.05);
+  }
+  
+  .group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .group class {
+    font-size: 1.25em;
+    color: #8f2c24;
+    font-weight: 500;
+    text-decoration: none;
+    
+  }
+  
+  .group class:hover {
+    text-decoration: underline;
+  }
+  
+  /* Card fade-in animation */
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-50px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  

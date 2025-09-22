@@ -1,0 +1,36 @@
+<app-auth-layout>
+    <div class="signup-card">
+        <form class="container" #registerForm="ngForm">       <!--you can name registerForm whatever but ngForm would be always there in template driven -->
+            <h4>Signup</h4>
+            <div class="inputBox">
+                <input 
+                type="email" 
+                placeholder="Email" 
+                required 
+                pattern="^[a-zA-Z0-9]+@[a-z]+\.[a-zA-Z]{2,3}$"         
+                ngModel                                          
+                name="email"
+                #email="ngModel" 
+                />
+            </div>
+            <h6 class="red-text" [style.visibility]="email.invalid && email.touched?'visible':'hidden'">! Enter correct mail</h6>
+            <div class="inputBox">
+                <input
+                type="password"
+                placeholder="Password"
+                required
+                minlength="6"
+                ngModel
+                name="password"
+                #password="ngModel"
+                >
+            </div>
+            <h6 class="red-text" [style.visibility]="password.invalid && password.touched?'visible':'hidden'">! password required & greater than 6 chars</h6>
+            <div class="group">
+                <button class="btn-green" [disabled]="registerForm.invalid" (click)="register(registerForm)">Signup</button>
+                <button class="btn-red" (click)="reset(registerForm)">Reset</button>
+            </div>
+        </form>
+        
+    </div>
+</app-auth-layout>

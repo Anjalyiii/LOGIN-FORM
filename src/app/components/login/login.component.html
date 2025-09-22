@@ -1,0 +1,43 @@
+
+  <app-auth-layout>
+    <div class="login-card">
+      <form [formGroup]="loginform">
+        <h4>Login</h4>
+        <div class="inputBox">
+          <input type="email" placeholder="Email" [formControl]="email"/>
+        </div>
+        <h5 class="red-text" [style.visibility]="email.invalid && email.touched?'visible':'hidden'">!Enter correct email</h5>
+        <div class="inputBox">
+          <input type="password" placeholder="Password" [formControl]="password"/>
+        </div>
+        <h5 class="red-text" [style.visibility]="password.invalid && password.touched?'visible':'hidden'">!Password required &gt; 6 chars</h5>
+        <div class="group">
+          <button class="btn-green" [disabled]="loginform.invalid" (click)="login()">Login</button>
+          <button class="btn-red" (click)="reset()">Reset</button>
+        </div>
+      </form>
+    
+    </div>
+  </app-auth-layout>
+
+  <!--app-auth-layout>
+    <div class="login-card">
+      <h2>Sign In</h2>
+      <form [formGroup]="loginform">
+        <div class="inputBox">
+          <input type="email" placeholder="Email" [formControl]="email">
+        </div>
+        <div class="inputBox">
+          <input type="password" placeholder="Password" [formControl]="password">
+        </div>
+        <div class="inputBox">
+          <button type="submit" id="btn" (click)="login()">Login</button>
+        </div>
+        <div class="group">
+          <a href="#">Forgot Password?</a>
+          <a routerLink="/signup">Signup</a>
+        </div>
+      </form>
+    </div>
+  </app-auth-layout-->
+  

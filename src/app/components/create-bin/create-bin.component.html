@@ -1,0 +1,21 @@
+<app-auth-layout>
+    <div class="login-card">
+      <form [formGroup]="binform">
+        <h4>create code snippet</h4>
+        <div class="inputBox">
+          <input type="text" placeholder="Title" [formControl]="title"/>
+        </div>
+        <h5 class="red-text" [style.visibility]="title.invalid && title.touched?'visible':'hidden'">!Title is required</h5>
+        <div class="inputBox">
+          <textarea type="text" placeholder="Code snippet" [formControl]="code"></textarea>
+        </div>
+        <h5 class="red-text" [style.visibility]="code.invalid && code.touched?'visible':'hidden'">!code is required</h5>
+        <div class="group">
+          <button class="btn-green" [disabled]="binform.invalid" (click)="save()">Create</button>
+          
+        </div>
+      </form>
+    
+    </div>
+  </app-auth-layout>
+
