@@ -4,6 +4,7 @@ import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } fr
 
 import * as countries from 'i18n-iso-countries';
 import enLocale from 'i18n-iso-countries/langs/en.json';
+import { AuthLayoutComponent } from '../auth-layout/auth-layout.component';
 
 
 countries.registerLocale(enLocale)
@@ -11,7 +12,7 @@ countries.registerLocale(enLocale)
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule,ReactiveFormsModule,AuthLayoutComponent],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.css'
 })
