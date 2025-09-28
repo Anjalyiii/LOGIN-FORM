@@ -1,0 +1,30 @@
+{
+    "Login":"Prijava",
+    "Reset": "Ponastavi",
+    "Email":"E-pošta",
+    "Email:":"E-pošta:",
+    "Password":"Geslo",
+    "!Enter correct email":"!Vnesite pravilen e-poštni naslov",
+    "!Password required > 6 chars":"!Geslo je obvezno (več kot 6 znakov)",
+    "User Details":"Podatki o uporabniku",
+    "Name:":"Ime:",
+    "Name is required.":"Ime je obvezno.",
+    "Enter a valid email.":"Vnesite veljaven e-poštni naslov.",
+    "Address-":"Naslov-",
+    "city": "Mesto:",
+    "select_country": "Izberite državo",
+    "phone_numbers": "Telefonske številke-",
+    "remove": "Odstrani",
+    "add_phone": "Dodaj telefon",
+    "submit": "Pošlji",
+    "enter_valid_city": "Vnesite veljavno mesto",
+    "country_required": "Država je obvezna.",
+    "valid_phone_number": "Vnesite veljavno 10-mestno telefonsko številko.",
+    "s_no": "Zap. št.",
+    "edit": "Uredi",
+    "delete": "Izbriši",
+    "action": "Dejanja",
+    
+    "phone": "Telefon"
+
+}

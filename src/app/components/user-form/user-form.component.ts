@@ -5,6 +5,7 @@ import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } fr
 import * as countries from 'i18n-iso-countries';
 import enLocale from 'i18n-iso-countries/langs/en.json';
 import { AuthLayoutComponent } from '../auth-layout/auth-layout.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 countries.registerLocale(enLocale)
@@ -12,19 +13,19 @@ countries.registerLocale(enLocale)
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule,AuthLayoutComponent],
+  imports: [CommonModule,ReactiveFormsModule,AuthLayoutComponent,TranslateModule],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.css'
 })
 export class UserFormComponent {
-  userForm: FormGroup;
-  submitted:boolean=false
-  submittedUsers:any[]=[]
-  editIndex:number |null=null;
-  countrylist:{code:string,name:string}[]=[];
+  userForm: FormGroup;                                      //main FormGroup that holds all form fields
+  submitted:boolean=false                                  //track if form was submitted
+  submittedUsers:any[]=[]                                  //stores successfully submitted users
+  editIndex:number |null=null;                                //distinguish between edit and add mode
+  countrylist:{code:string,name:string}[]=[];                  //dropdown from i18n-iso-countries          
 
   constructor(private fb: FormBuilder) {
-    
+    //mapping country codes to names
     this.countrylist=Object.entries(countries.getNames("en",{select:"official"})).map(([code ,name])=>({code,name:name as string}));
     
     this.userForm = this.fb.group({
@@ -32,17 +33,17 @@ export class UserFormComponent {
       email: ['', [Validators.required, Validators.email]],
 
       
-      address: this.fb.group({
+      address: this.fb.group({                                            //nested formgroup
         city: ['', Validators.required],
         country: ['', Validators.required]
       }),
 
-      phoneNumbers: this.fb.array([this.createPhoneField()])
+      phoneNumbers: this.fb.array([this.createPhoneField()])                        //form array
     });
   }
 
 
-  get phoneNumbers(): FormArray {
+  get phoneNumbers(): FormArray {                                        //to get this.phoneNumbers instead of casting every time
     return this.userForm.get('phoneNumbers') as FormArray;
   }
 
@@ -75,11 +76,11 @@ export class UserFormComponent {
     //console.log('Form Data:', this.userForm.value);
     const formValue=this.userForm.value;
     if(this.editIndex!==null){
-      this.submittedUsers[this.editIndex]=formValue;
+      this.submittedUsers[this.editIndex]=formValue;           //update existing user
       this.editIndex=null
     }
     else{
-      this.submittedUsers.push(formValue)
+      this.submittedUsers.push(formValue)                       //add new user
     }
 
     this.userForm.reset();
@@ -89,11 +90,14 @@ export class UserFormComponent {
     this.addPhone();
     this.submitted=false
     }
-    getCountryName(code:string):string{
+    getCountryName(code:string):string{                                //change country code into display name
       return countries.getName(code,"en")||code;
 
     } 
     
+    //Loads the selected user into the form
+    //Clears form & phone fields before patching
+    //Switches form into edit mode by setting editIndex
     onEdit(index:number){
       const user=this.submittedUsers[index];
 
@@ -101,7 +105,7 @@ export class UserFormComponent {
 
       this.phoneNumbers.clear();
 
-      this.userForm.patchValue({
+      this.userForm.patchValue({                                       //updates only the specified fields in the form without touching the others.
         name:user.name,
         email:user.email,
         address:{
@@ -109,16 +113,18 @@ export class UserFormComponent {
           country:user.address.country
         }
       });
-        user.phoneNumbers.forEach((phone:string) => {this.phoneNumbers.push(this.fb.control(phone,[Validators.required,Validators.pattern('^[0-9]{10}$')]))
+        user.phoneNumbers.forEach((phone:string) => {this.phoneNumbers.push(this.fb.control(phone,[Validators.required,Validators.pattern('^[0-9]{10}$')]))    //handle separately because of form array
 
         });
         this.editIndex=index;
       
     }
+
+
     onDelete(index:number){
       const confirmDelete=window.confirm('are you sure you want to delete this?')
       if (!confirmDelete){return}
-      this.submittedUsers.splice(index,1);
+      this.submittedUsers.splice(index,1);                    //removes  specific user from submitted users
 
       this.userForm.reset();
 

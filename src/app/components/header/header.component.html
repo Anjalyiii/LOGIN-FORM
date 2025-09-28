@@ -1,9 +1,12 @@
+<!-- header (containing createbin,login,logout,signup,about) shows selective menu on basis of user logged in or not -->
+
+
 <div>
     <nav>
-        <h2><a routerLink="/">codebin</a></h2>
+        <h2><a routerLink="/">codebin</a></h2>        <!--static link-->
         <ul>
-            <li><a routerLink="/create" routerLinkActive="active">Create Bin</a></li>
-            @if(authService.isauthenticated()){
+            <li><a routerLink="/create" routerLinkActive="active">Create Bin</a></li>         <!--static link-->
+            @if(authService.isauthenticated()){                             <!--show logout if authenticated(if in createbin)-->
                 <li (click)="authService.logout()">Logout</li>
 
             } @else {
@@ -12,8 +15,24 @@
                
             }
            
-            <li><a routerLink="/about" routerLinkActive="active">about</a></li>
+            <li><a routerLink="/about" routerLinkActive="active">about</a></li>       <!--static link-->
         </ul>
     </nav>
+    <div class="language-box">
+      <button class="dropdown-btn" (click)="toggleDropdown()">
+        {{ getCurrentLanguageName() }}
+      </button>
+    
+      <div class="dropdown-content" [class.show]="dropdownOpen">
+        <div class="global">
+          <p class="mt-2 hover" (click)="selectLanguage('en')">English</p>
+          <p class="mt-2 hover" (click)="selectLanguage('ja')">Japanese</p>
+          <p class="mt-2 hover" (click)="selectLanguage('sl')">Slovenian</p>
+          <p class="mt-2 hover" (click)="selectLanguage('ko')">Korean</p>
+        </div>
+      </div>
+    </div>
+    
+      
     <hr/>
 </div>

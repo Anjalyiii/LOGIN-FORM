@@ -4,11 +4,12 @@ import { inject } from '@angular/core';
 import { routes } from './app.routes';
 
 export const authGuard: CanActivateFn = () => {
-  const authService= inject(AuthService)
+  const authService= inject(AuthService)               /*to get instance of AuthService*/
   const router=inject(Router)
   if (authService.isauthenticated()){
-  return true;}
+  return true;                                      /*tells the angular to load the route*/
+}
   else
-  {router.navigate(['/'])
-    return false}
+  {router.navigate(['/'])                                  /*if not logged in,redirect to home*/
+    return false}                                             /*will not load the protected route*/
 };

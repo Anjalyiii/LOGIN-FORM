@@ -1,19 +1,19 @@
 
   <app-auth-layout>
     <div class="login-card">
-      <form [formGroup]="loginform">
-        <h4>Login</h4>
+      <form [formGroup]="loginform">                  <!--Binds the entire <form> to FormGroup in the component (loginform).-->
+        <h4>{{'Login'|translate}}</h4>
         <div class="inputBox">
-          <input type="email" placeholder="Email" [formControl]="email"/>
+          <input type="email" [placeholder]="'Email'|translate" [formControl]="email"/>
         </div>
-        <h5 class="red-text" [style.visibility]="email.invalid && email.touched?'visible':'hidden'">!Enter correct email</h5>
+        <h5 class="red-text" [style.visibility]="email.invalid && email.touched?'visible':'hidden'">{{'!Enter correct email'|translate}}</h5>      <!--toggling-->
         <div class="inputBox">
-          <input type="password" placeholder="Password" [formControl]="password"/>
+          <input type="password" [placeholder]="'Password'|translate" [formControl]="password"/>
         </div>
-        <h5 class="red-text" [style.visibility]="password.invalid && password.touched?'visible':'hidden'">!Password required &gt; 6 chars</h5>
+        <h5 class="red-text" [style.visibility]="password.invalid && password.touched?'visible':'hidden'">{{'!Password required &gt; 6 chars'|translate}}</h5>
         <div class="group">
-          <button class="btn-green" [disabled]="loginform.invalid" (click)="login()">Login</button>
-          <button class="btn-red" (click)="reset()">Reset</button>
+          <button class="btn-green" [disabled]="loginform.invalid" (click)="login()">{{'Login'|translate}}</button>      <!--Disabled if the form is invalid. Calls login() when clicked.-->
+          <button class="btn-red" (click)="reset()">{{'Reset'|translate}}</button>
         </div>
       </form>
     

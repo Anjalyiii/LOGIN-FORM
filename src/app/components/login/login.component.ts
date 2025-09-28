@@ -1,5 +1,5 @@
 /*reactive template
-formcontrol,formgroup is used
+formcontrol(control single input),formgroup(control multiple input) is used with validators
 */
 
 import { Component } from '@angular/core';
@@ -7,11 +7,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { HeaderComponent } from '../header/header.component';
 import { AuthLayoutComponent } from '../auth-layout/auth-layout.component';
 import { AuthService } from '../../services/auth.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule,HeaderComponent,AuthLayoutComponent],
+  imports: [ReactiveFormsModule,HeaderComponent,AuthLayoutComponent,TranslateModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -25,11 +26,11 @@ export class LoginComponent {
     Validators.required,
     Validators.minLength(6)
   ])
-  loginform= new FormGroup({
+  loginform= new FormGroup({                  /*will track overall state(valid/invalid,touched/untouched)*/
     email:this.email,
     password:this.password
   })
-  login(){
+  login(){                                     /*when user submit the form,it calls authservice loginuser*/
     
     this.authService.loginUser(this.loginform.value.email!,this.loginform.value.password!)
   }

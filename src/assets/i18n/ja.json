@@ -1,0 +1,30 @@
+{
+    "Login": "ログイン",
+    "Reset":"リセット",
+    "Email":"メール",
+    "Email:":"メール:",
+    "Password":"パスワード",
+    "!Enter correct email":"!正しいメールアドレスを入力してください",
+    "!Password required > 6 chars":"パスワードは6文字以上必要です",
+    "User Details":"ユーザー情報",
+    "Name:": "名前:",
+    "Name is required.":"名前は必須です。",
+    "Enter a valid email.":"有効なメールアドレスを入力してください。",
+    "Address-":"住所-",
+    "city": "市:",
+    "select_country": "国を選択してください",
+    "phone_numbers": "電話番号-",
+    "remove": "削除",
+    "add_phone": "電話を追加",
+    "submit": "送信",
+    "enter_valid_city": "有効な市を入力してください",
+    "country_required": "国は必須です",
+    "valid_phone_number": "有効な10桁の電話番号を入力してください",
+    "s_no": "番号",
+    "edit": "編集",
+    "delete": "削除",
+    "action": "操作",
+    
+    "phone": "電話"
+
+}

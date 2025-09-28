@@ -1,62 +1,64 @@
 <app-auth-layout>
     <div class="form-table-wrapper">  <!--style="display: flex; gap: 20px; align-items: flex-start;"-->
         <div class="form-container"> <!--style="flex: 1;"-->
-            <h2 class="mb-4">User Details</h2>
+            <h2 class="mb-4">{{'User Details'|translate}}</h2>
 
             <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
 
                 <!-- Name -->
                 <div class="mb-3">
-                    <label class="form-label">Name:</label>
+                    <label class="form-label">{{'Name:'|translate}}</label>
                     <input type="text" class="form-control" formControlName="name">
                     <div class="text-danger mt-1" *ngIf="userForm.get('name')?.invalid && submitted">
-                        Name is required.
+                        {{'Name is required.'|translate}}
                     </div>
                 </div>
 
                 <!-- Email -->
                 <div class="mb-3">
-                    <label class="form-label">Email:</label>
+                    <label class="form-label">{{'Email:'|translate}}</label>
                     <input type="email" class="form-control" formControlName="email">
                     <div class="text-danger mt-1" *ngIf="userForm.get('email')?.invalid && submitted">
-                        Enter a valid email.
+                        {{'Enter a valid email.'|translate}}
                     </div>
                 </div>
 
                 <!-- Address -->
-                <h4 class="mt-4 text-left ">Address- </h4>
+                <h4 class="mt-4 text-left ">{{'Address-'|translate}} </h4>
                 <div formGroupName="address">
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label class="form-label">City:</label>
+                            <label class="form-label">{{'city'|translate}}</label>
                             <input type="text" class="form-control" formControlName="city">
                             <div class="text-danger mt-1" *ngIf="userForm.get('city')?.invalid && submitted">
-                                Enter valid city
+                                {{'enter_valid_city'|translate}}
                             </div>
                         </div>
-                        <select class="form-control" formControlName="country">
-                            <option value="" disabled>Select Country</option>
-                            <option *ngFor="let c of countrylist" [value]="c.code">{{ c.name }}</option>
-                        </select>
-                        <div *ngIf="userForm.get('country')?.invalid && submitted">
-                            Country is required.
-                        </div>
+                            <select class="form-control" formControlName="country">
+                                <option value="" disabled>{{'select_country'|translate}}</option>
+                                <option *ngFor="let c of countrylist" [value]="c.code">{{ c.name }}</option>
+                            </select>
+                            <div *ngIf="userForm.get('country')?.invalid && submitted">
+                                {{'country_required'|translate}}
+                            </div>
+                        
+                        
                     </div>
                 </div>
 
                 <!-- Phone Numbers -->
-                <h4 class="mt-4 text-left">Phone Numbers- </h4>
+                <h4 class="mt-4 text-left">{{'phone_numbers'|translate}} </h4>
                 <div formArrayName="phoneNumbers">
                     <div *ngFor="let phone of phoneNumbers.controls; let i = index" class="mb-3">
                         <div class="d-flex align-items-center">
                             <input class="form-control me-2" [formControlName]="i" placeholder="Phone Number">
                             <button type="button" class="btn-custom-remove" (click)="removePhone(i)">
-                                Remove
+                                {{'remove'|translate}}
                             </button>
                         </div>
 
                         <div class="text-danger mt-1" *ngIf="phone.invalid && submitted">
-                            Type a valid 10-digit phone number.
+                            {{'valid_phone_number'|translate}}
                         </div>
                     </div>
                 </div>
@@ -73,30 +75,32 @@
         </div>
     </div>
 
-
+    
 
         <div class="table-container" *ngIf="submittedUsers.length > 0">
             <table  border="1" cellpadding="8" cellspacing="0" style="width: 100%;">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>City</th>
-                        <th>Country</th>
-                        <th>Phone</th>
-                        <th>Action</th>
+                        <th>{{'s.no'|translate}}</th>
+                        <th>{{'Name:'|translate}}</th>
+                        <th>{{'Email'|translate}}</th>
+                        <th>{{'city'|translate}}</th>
+                        <th>{{'country'|translate}}</th>
+                        <th>{{'phone'|translate}}</th>
+                        <th>{{'action'|translate}}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of submittedUsers; let i=index">
+                        <td>{{ i + 1 }}</td>
                         <td>{{user.name}}</td>
                         <td>{{user.email}}</td>
                         <td>{{user.address.city}}</td>
                         <td>{{getCountryName(user.address.country)}}</td>
                         <td>{{user.phoneNumbers[0]}}</td>
                         <td>
-                            <button type="button" class="btn-edit me-2" (click)="onEdit(i)">Edit</button>
-                            <button type="button" class="btn-delete" (click)="onDelete(i)">Delete</button>
+                            <button type="button" class="btn-edit me-4" (click)="onEdit(i)">{{'edit'|translate}}</button>
+                            <button type="button" class="btn-delete" (click)="onDelete(i)">{{'delete'|translate}}</button>
                         </td>
                     </tr>
                 </tbody>

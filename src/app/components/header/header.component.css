@@ -34,3 +34,54 @@ a{
 ul li a.active {
   font-weight: 700;
 }
+.language-box {
+  position: relative; /* required for dropdown */
+  display: inline-block;
+}
+
+.dropdown-btn {
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.dropdown-content {
+  display: none; /* hidden by default */
+  position: absolute; /* appear below button */
+  top: 100%;
+  left: 0;
+  min-width: 140px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 100;
+}
+
+.dropdown-content.show {
+  display: block; /* shown when toggled */
+}
+
+.dropdown-content p {
+  margin: 0;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dropdown-content p:hover {
+  background-color: #f0f0f0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+nav a {
+  text-decoration: none;
+}
